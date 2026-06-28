@@ -63,11 +63,7 @@ Sistem juga menyediakan dashboard khusus untuk Admin dan Manager guna mempermuda
 
 ### Dashboard Masyarakat
 
-![Dashboard User](preview/dashboard-user.png)
-
-### Laporan PDF
-
-![Laporan](preview/laporan.png)
+![Dashboard User](preview/dashboard-masyarakat.png)
 
 ---
 
