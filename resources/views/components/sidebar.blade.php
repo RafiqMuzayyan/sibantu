@@ -1,10 +1,10 @@
-<div class="w-63  relative ">
-    <aside class="fixed top-0 left-0 w-63 h-full p-2">
+<div class="min-w-50  relative ">
+    <aside class="fixed top-0 left-0 w-50 h-full p-2">
         <div class="flex flex-col justify-between bg-egg w-full h-full rounded-md my-shadow px-4 py-4">
             <div>
-                <a id="head" class="flex items-center  w-full cursor-pointer " href="/dashboard">
-                    <img src="{{ asset('img/icon.png') }}" alt="login" class="w-13">
-                    <h1 class="font-bold text-3xl text-black">Si<span class="text-primary">Bantu</span></h1>
+                <a id="head" class="flex items-center  w-full cursor-pointer gap-1" href="/dashboard">
+                    <img src="{{ asset('img/icon.png') }}" alt="login" class="w-9">
+                    <h1 class="font-bold text-2xl text-black">Si<span class="text-primary">Bantu</span></h1>
                 </a>
                 <div class=" flex flex-col gap-4  mt-9">
                    <a href="{{ route('dashboard') }}"

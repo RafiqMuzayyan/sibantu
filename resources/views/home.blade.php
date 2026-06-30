@@ -5,12 +5,12 @@
             <span>Home</span>
         </h1>
     </x-slot:header>
-    <div class="flex gap-6">
+    <div class="flex flex-col xl:flex-row gap-6">
     
         <div class="flex flex-1 flex-col gap-10 p-4">
     
             <!-- STATS -->
-            <div class="grid grid-cols-4 gap-5">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
     
                 <div class="flex flex-col bg-primary gap-3 px-6 py-5 rounded-2xl my-shadow text-white">
                     <h3 class="font-semibold text-sm">
@@ -71,7 +71,7 @@
                     </p>
                 </div>
     
-                <div class="grid grid-cols-3 gap-5">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
     
                     <a  
                         href="{{ route('aduan.create', ['jenis' => 'sembako']) }}" 
@@ -116,7 +116,7 @@
         </div>
     
         <!-- RIGHT SIDEBAR -->
-        <div class="w-150 p-4">
+        <div class="w-full xl:w-120 p-4">
     
             <div class="w-full bg-egg p-5 rounded-2xl my-shadow">
     
@@ -124,7 +124,7 @@
                     Aduan Dalam Progress
                 </h2>
     
-                <div class="flex flex-col gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:flex xl:flex-col gap-4">
                     @if($progress->isEmpty())
                         <div class="bg-white/50 rounded-xl p-6 text-center">
                          <i class="fa-solid fa-inbox text-4xl text-black/30 mb-3"></i>

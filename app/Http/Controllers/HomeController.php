@@ -29,7 +29,7 @@ class HomeController extends Controller
             'progress' => $user->data_aduan()
                 ->where('status', 'diproses')
                 ->latest()
-                ->take(3)
+                ->take(4)
                 ->get(),
         ]);
     }

@@ -52,7 +52,7 @@
     </div>
 
     {{-- content --}}
-    <div class="flex gap-4  h-full">
+    <div class="flex flex-col-reverse xl:flex-row gap-4  h-full">
         
         <div class="flex flex-1 flex-col gap-4 h-full">
             <div class="w-full  bg-egg my-shadow rounded-xl p-4">
@@ -107,7 +107,7 @@
                         </tr>
                         @foreach ($aduan_terbaru as  $aduan)                         
                             <tr>
-                                <td><a class="text-primary hover:underline" href="{{ route('aduan', $aduan) }}" >{{ Str::limit($aduan['judul'], 50) }}</a></td>
+                                <td><a class="text-primary hover:underline line-clamp-1" href="{{ route('aduan', $aduan) }}" >{{ Str::limit($aduan['judul'], 40) }}</a></td>
                                 <td>{{ $aduan->user->nama }}</td>
                                 <td>{{ $aduan['jenis_aduan'] }}</td>
                                 <td>{{ $aduan->created_at->diffForHumans() }}</td>
@@ -131,12 +131,12 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-col gap-4 w-120 h-full">
+        <div class="w-full flex flex-col xl:w-80 h-full">
             <div class="w-full h-fit flex flex-col bg-egg my-shadow rounded-xl p-4 gap-4">
                 <h2 class="font-semibold text-xl text-black">
                     Verifikasi Aduan Terbaru
                 </h2>
-                <div class="flex flex-col gap-4">
+                <div class="grid grid-cols-2 xl:flex xl:flex-col gap-4">
                     @if ($verifikasi_terbaru->isEmpty())
                         <div class="bg-white/50 rounded-xl p-6 text-center">
                             <i class="fa-solid fa-inbox text-4xl text-black/30 mb-3"></i>
@@ -148,7 +148,7 @@
                         @foreach($verifikasi_terbaru as $aduan)
 
                         <div class="flex flex-col gap-3 rounded-xl bg-white/50 p-4">
-                            <h3 class="font-semibold text-base">
+                            <h3 class="font-semibold text-base line-clamp-1">
                                 {{ $aduan['judul'] }}
                             </h3>
                             <div class="flex gap-2">

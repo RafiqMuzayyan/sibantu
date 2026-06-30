@@ -2,13 +2,15 @@
 
     <x-slot:header>
         <!-- HEADER -->
-        <div class="flex items-center justify-between">
+        <div class="flex items-stretch 
+        2xl:items-center  2xl:justify-between flex-col 2
+        2xl:flex-row">
     
-            <h1 class="text-3xl font-bold text-black">
+            <h1 class="text-3xl  font-bold text-black">
                 Laporan Periode Terpilih
             </h1>
     
-            <form method="get" class="flex items-center gap-5">
+            <form method="get" class="flex items-center justify-end gap-5">
     
                 <div class="flex items-center gap-3">
     
@@ -91,7 +93,7 @@
                 </div>
                 <div class="w-px h-10 bg-black/20"></div>
                 <button type="submit" class="px-4 py-2 rounded-xl font-semibold text-black border-2 cursor-pointer border-primary transition hover:bg-primary hover:text-white">
-                    Tampilkan Laporan
+                    Tampilkan 
                 </button>
             </form>
     
@@ -230,7 +232,7 @@
         </div>
 
         <!-- SIDEBAR -->
-        <div class="w-96">
+        <div class="w-80">
 
             <form
                 class="flex flex-col bg-egg my-shadow rounded-2xl p-5 gap-6"

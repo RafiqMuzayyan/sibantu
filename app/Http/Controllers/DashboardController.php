@@ -37,7 +37,7 @@ class DashboardController extends Controller
         $verifikasiTerbaru = Aduan::with('user')
             ->where('status', 'pending')
             ->latest()
-            ->take(5)
+            ->take(4)
             ->get();
 
         $aduanTerbaru = $query
