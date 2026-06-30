@@ -24,8 +24,8 @@
                 </p>
             @enderror
         </div>
-        <div class="flex gap-4 w-full">
-            <div class="flex flex-col gap-4 p-4 w-[50%]">
+        <div class="flex flex-col sm:flex-row gap-4 w-full">
+            <div class="flex flex-col gap-4 p-4 sm:w-[50%]">
                 <label for="" class="font-semibold text-xl">NIK</label>
                 <input 
                     type="number" 
@@ -35,7 +35,7 @@
                     readonly
                 >
             </div>
-            <div class="flex flex-col gap-4 p-4 w-[50%]">
+            <div class="flex flex-col gap-4 p-4 sm:w-[50%]">
                 <label for="" class="font-semibold text-xl">Email</label>
                 <input 
                     type="email" 
@@ -51,8 +51,8 @@
                 @enderror
             </div>
         </div>
-        <div class="grid grid-cols-4 gap-4" x-show="edit">
-            <div class="flex flex-col gap-4 p-4 col-span-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4" x-show="edit">
+            <div class="flex flex-col gap-4 p-4 sm:col-span-2">
                 <label for="" class="font-semibold text-xl">Password Lama</label>
                 <input 
                     type="password" 

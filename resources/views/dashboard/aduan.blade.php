@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <div class="flex flex-col flex-1 px-4 py-8">
-        <div class="flex gap-8">
+        <div class="flex flex-col lg:flex-row gap-8">
             <div class="flex flex-1 flex-col gap-4">
                 <div class="mb-4">
                     <h1 class="text-4xl font-bold text-primary mb-4">
@@ -14,7 +14,7 @@
                     id="map" 
                     data-lat="{{ $aduan->latitude }}"
                     data-lng="{{ $aduan->longitude }}" 
-                    class="w-full h-105 bg-egg rounded-xl overflow-hidden"
+                    class="w-full h-70 md:h-105 bg-egg rounded-xl overflow-hidden"
                 >
                 </div>
                 <div class="flex gap-2">
@@ -110,7 +110,6 @@
                         @method('DELETE')
 
                         <button
-                            type="submit"
                             class="bg-red-500 text-white px-4 py-2 rounded-lg cursor-pointer"
                             type="button"
                             x-ref="delete"
@@ -129,7 +128,7 @@
                     
                 </div>
             </div>
-            <aside class="w-105 flex flex-col gap-5">
+            <aside class="w-full lg:w-105 flex flex-col gap-5">
                 
                 <div class="bg-egg rounded-xl p-5 my-shadow">
                     <h2 class="text-xl font-semibold text-black mb-4">

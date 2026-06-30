@@ -3,8 +3,8 @@
         <h1 class="text-3xl font-bold text-black">Dashboard</h1>
     </x-slot:header>
     {{-- info dashboard --}}
-    <div class="grid grid-cols-5 gap-4">
-        <div class="flex flex-col bg-primary gap-2 p-4 my-shadow rounded-xl  text-white ">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+        <div class="flex flex-col col-span-2 md:col-span-1 bg-primary gap-2 p-4 my-shadow rounded-xl  text-white ">
             <h3 class="font-semibold">
                 <i class="fa-solid fa-list"></i> 
                 Total Aduan
@@ -97,22 +97,24 @@
                     <h1 class="text-xl font-semibold text-black">Aduan terbaru</h1>
                </div>
                 <div>
-                    <table class=" bg-white/50">
-                        <tr>
-                            <th>Judul</th>
-                            <th>Pelapor</th>
-                            <th>Kategori</th>
-                            <th>Dibuat</th>
-                            <th>Status</th>
-                        </tr>
+                    <table class=" bg-white/50 my-table">
+                        <thead>
+                            <tr>
+                                <th>Judul</th>
+                                <th>Pelapor</th>
+                                <th>Kategori</th>
+                                <th>Dibuat</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
                         @foreach ($aduan_terbaru as  $aduan)                         
                             <tr>
-                                <td><a class="text-primary hover:underline line-clamp-1" href="{{ route('aduan', $aduan) }}" >{{ Str::limit($aduan['judul'], 40) }}</a></td>
-                                <td>{{ $aduan->user->nama }}</td>
-                                <td>{{ $aduan['jenis_aduan'] }}</td>
-                                <td>{{ $aduan->created_at->diffForHumans() }}</td>
-                                <td>
-                                    <div class="flex items-center gap-2">
+                                <td data-label="Judul"><a class="text-primary hover:underline line-clamp-1" href="{{ route('aduan', $aduan) }}" >{{ Str::limit($aduan['judul'], 40) }}</a></td>
+                                <td data-label="Pelapor">{{ $aduan->user->nama }}</td>
+                                <td data-label="Kategori">{{ $aduan['jenis_aduan'] }}</td>
+                                <td data-label="Dibuat">{{ $aduan->created_at->diffForHumans() }}</td>
+                                <td data-label="status">
+                                    <div class="flex items-center justify-end md:justify-start gap-2">
                                         <div  class="w-3 h-3 rounded-full {{ match($aduan->status) {
                                             'selesai' => 'bg-selesai',
                                             'pending' => 'bg-pending',
@@ -136,7 +138,7 @@
                 <h2 class="font-semibold text-xl text-black">
                     Verifikasi Aduan Terbaru
                 </h2>
-                <div class="grid grid-cols-2 xl:flex xl:flex-col gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:flex xl:flex-col gap-4">
                     @if ($verifikasi_terbaru->isEmpty())
                         <div class="bg-white/50 rounded-xl p-6 text-center">
                             <i class="fa-solid fa-inbox text-4xl text-black/30 mb-3"></i>

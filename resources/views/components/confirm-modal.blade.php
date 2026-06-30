@@ -1,7 +1,7 @@
 <div
     x-show="show"
     x-cloak
-    class="fixed inset-0 bg-black/50 flex items-center justify-center z-999"
+    class="fixed inset-0 bg-black/50 flex items-center justify-center z-9999"
 >
 
     <div class="bg-white rounded-xl p-6 w-96 relative z-10000">

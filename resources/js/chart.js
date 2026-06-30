@@ -12,7 +12,7 @@ if (dashboardChart) {
     const values = JSON.parse(
         dashboardChart.dataset.values
     );
-
+    const isMobile = window.innerWidth < 768;
     new Chart(dashboardChart, {
         type: 'bar',
         data: {
@@ -28,17 +28,17 @@ if (dashboardChart) {
                 ],
 
                 borderRadius: {
-                    topLeft: 0,
+                    topLeft: isMobile ? 5 : 0,
                     bottomLeft: 0,
                     topRight: 5,
-                    bottomRight: 5
+                    bottomRight: isMobile ? 0 : 5
                 },
 
                 borderSkipped: false
             }]
         },
         options: {
-            indexAxis: 'y',    
+            indexAxis: isMobile ? 'x' : 'y',    
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
@@ -64,7 +64,7 @@ if (dashboardChart) {
                 datalabels: {
                     color: '#111827',
                     anchor: 'end',
-                    align: 'right',
+                    align: isMobile ? 'top' : 'right',
                     offset: 8,
                     font: {
                         weight: 'bold',

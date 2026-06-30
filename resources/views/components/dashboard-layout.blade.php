@@ -8,22 +8,46 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
 </head>
-<body class="p-2 flex h-screen gap-2 "  x-data="confirmModal">
+<body   x-data="{...confirmModal(), openSidebar:false}">
     <x-flash-message />
-    <x-sidebar />
-    <div class=" flex flex-col w-full flex-1 ">
+    <!-- Mobile Navbar -->
+    <div class="lg:hidden flex items-center justify-between p-4 bg-background shadow-sm sticky top-0 z-40">
 
-        {{-- head --}}
-        @if (isset($header))
-            <div class="py-7.5 ">
-                {{ $header }}
-            </div>
-        @endif
+        
+        <a class="flex items-center gap-2" href="/dashboard">
+            <img src="{{ asset('img/icon.png') }}" class="w-8">
+            <h1 class="font-bold text-xl">
+                Si<span class="text-primary">Bantu</span>
+            </h1>
+        </a>
+        <button type="button" class="cursor-pointer" @click.stop="openSidebar = !openSidebar">
 
-        <main class="flex flex-col gap-4 w-full h-fit">
-            {{ $slot }}
-        </main>
+            <i
+                :class="openSidebar
+                    ? 'fa-solid fa-xmark'
+                    : 'fa-solid fa-bars'"
+                class="text-2xl text-primary"
+            ></i>
 
+        </button>
+
+    </div>
+    <div class="p-2 flex h-screen gap-2 relative">
+        <x-sidebar />
+        <div class=" flex flex-col w-full flex-1 ">
+    
+            {{-- head --}}
+            @if (isset($header))
+                <div class="py-7.5 ">
+                    {{ $header }}
+                </div>
+            @endif
+    
+            <main class="flex flex-col gap-4 w-full h-fit">
+                {{ $slot }}
+            </main>
+    
+        </div>
     </div>
 <x-confirm-modal />
 @stack('scripts')

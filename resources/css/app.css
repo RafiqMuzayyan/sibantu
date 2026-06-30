@@ -50,10 +50,6 @@ table {
     overflow: hidden;
 }
 
-table thead {
-    background: var(--color-egg);
-}
-
 table th {
     text-align: left;
     padding: 12px 16px;
@@ -96,5 +92,28 @@ table td .badge{
 
 [x-cloak] {
     display: none !important;
+}
+
+@media only screen and (max-width: 768px){
+    .my-table thead{
+        display: none;
+    }
+    .my-table tr {
+    border-bottom: 2px solid var(--color-primary);
+    }
+
+    .my-table tr:last-child {
+        border-bottom: none;
+    }
+    .my-table td{
+        display: block;
+        text-align: end;
+    }
+    .my-table td::before{
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        color: var(--color-black);
+    }
 }
 

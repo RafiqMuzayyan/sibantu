@@ -10,13 +10,13 @@
             method="GET"
             action="{{ route('data_laporan') }}" 
             class="flex gap-2 items-center justify-end">
-            <div>
+            <div class="w-full md:w-fit">
                 <input 
                     type="text" 
                     id="search"
                     placeholder="Cari judul laporan . . ."
                     name="search" 
-                    class=" p-2 rounded-md border bg-primary/50 text-white"
+                    class=" p-2 rounded-md border bg-primary/50 text-white w-full"
                     value="{{ request('search') }}"
                 >
             </div>
@@ -47,21 +47,23 @@
                     </div>
                 @endif
             @else
-            <table class=" bg-white/50">
-                <tr>
-                    <th>Judul</th>
-                    <th>
-                        Periode
-                    </th>
-                    <th>Total Aduan</th>
-                    <th>Dibuat Oleh</th>
-                    <th>Tanggal</th>
-                    <th>Aksi</th>
-                </tr>
+            <table class=" bg-white/50 my-table">
+                <thead>
+                    <tr>
+                        <th>Judul</th>
+                        <th>
+                            Periode
+                        </th>
+                        <th>Total Aduan</th>
+                        <th>Dibuat Oleh</th>
+                        <th>Tanggal</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
                 @foreach ($data_laporan as $laporan)            
                 <tr>
-                    <td>{{ $laporan->judul }}</td>
-                    <td>
+                    <td data-label="Judul">{{ $laporan->judul }}</td>
+                    <td data-label="Periode">
                         @if (!$laporan->tanggal_mulai && !$laporan->tanggal_selesai)
                             Semua Periode
                         @else
@@ -69,12 +71,12 @@
                             <span class="text-pending">sampai</span>
                             {{ $laporan->tanggal_selesai->translatedFormat('d F Y') }}
                         @endif
-                    </td> 
-                    <td>{{ $laporan->user->nama }}</td>
-                    <td>{{ $laporan->created_at->diffForhumans() }}</td>
-                    <td>{{ $laporan->total_aduan }}</td>
-                    <td>
-                        <div class="flex gap-2 items-center">
+                    </td > 
+                    <td data-label="Total Aduan">{{ $laporan->total_aduan }}</td>
+                    <td data-label="Dibuat Oleh">{{ $laporan->user->nama }}</td>
+                    <td data-label="Tanggal">{{ $laporan->created_at->translatedFormat('d F Y') }}</td>
+                    <td data-label="Aksi">
+                        <div class="flex gap-2 items-center justify-end md:justify-start">
                             <a class="font-semibold bg-primary text-white px-4 py-1 rounded" href="{{ asset('storage/' . $laporan->file) }}" target="_blank">lihat</a>
                             <a class="font-semibold bg-primary text-white px-4 py-1 rounded" href="{{ asset('storage/' . $laporan->file) }}" download>Download</a>
                         </div>

@@ -6,18 +6,18 @@
         <form 
             method="GET"
             action="{{ route('data_aduan') }}" 
-            class="flex gap-2 items-center justify-end">
-            <div>
+            class="flex gap-2 flex-col-reverse md:flex-row items-center justify-end">
+            <div class="w-full md:w-fit">
                 <input 
                     type="text" 
                     id="search"
                     placeholder="Cari Aduan atau Pelapor"
                     name="search" 
-                    class=" p-2 rounded-md border bg-primary/50 text-white"
+                    class=" p-2 rounded-md border bg-primary/50 text-white w-full"
                     value="{{ request('search') }}"
                 >
             </div>
-            <div class="flex items-center gap-2"  >
+            <div class="w-full md:w-fit flex justify-end items-center gap-1 sm:gap-2"  >
                 <select class=" p-2 rounded-md border bg-primary text-white" name="kategori" onchange="this.form.submit()">
                     <option value="">Semua Kategori</option>
                     <option
@@ -85,25 +85,27 @@
                     </div>
                 @endif
             @else
-            <table class=" bg-white/50">
-                <tr>
-                    <th>Judul</th>
-                    <th>
-                        Pelapor
-                    </th>
-                    <th>Kategori</th>
-                    <th>Tanggal</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
-                </tr>
+            <table class=" bg-white/50 my-table">
+                <thead>
+                    <tr>
+                        <th>Judul</th>
+                        <th>
+                            Pelapor
+                        </th>
+                        <th>Kategori</th>
+                        <th>Tanggal</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
                 @foreach ($data_aduan as $aduan)            
                 <tr>
-                    <td><a class="text-primary hover:underline" href="{{ route('aduan', $aduan) }}"> {{ Str::limit($aduan['judul'], 50) }} </a></td>
-                    <td>{{ $aduan->user->nama }}</td>
-                    <td>{{ ucfirst(str_replace('_', ' ', $aduan['jenis_aduan'])) }}</td>
-                    <td>{{ $aduan->created_at->translatedFormat('d F Y') }}</td>
-                    <td>
-                        <div class="flex items-center gap-2">
+                    <td data-label="Judul"><a class="text-primary hover:underline line-clamp-1" href="{{ route('aduan', $aduan) }}"> {{ Str::limit($aduan['judul'], 50) }} </a></td>
+                    <td data-label="Pelapor">{{ $aduan->user->nama }}</td>
+                    <td data-label="Kategori">{{ ucfirst(str_replace('_', ' ', $aduan['jenis_aduan'])) }}</td>
+                    <td data-label="Tangal">{{ $aduan->created_at->translatedFormat('d F Y') }}</td>
+                    <td data-label="Status">
+                        <div class="flex items-center justify-end md:justify-start gap-2">
                             <div  class="w-3 h-3 rounded-full {{ match($aduan->status) {
                                 'selesai' => 'bg-selesai',
                                 'pending' => 'bg-pending',
@@ -113,8 +115,8 @@
                             <span>{{ ucfirst($aduan['status']) }}</span>
                         </div>
                     </td>
-                    <td>
-                        <div class="flex items-center gap-2">
+                    <td data-label="Aksi">
+                        <div class="flex items-center gap-2 justify-end md:justify-start">
                             <form
                                 action="{{ route('admin.aduan.destroy', $aduan) }}"
                                 method="POST"

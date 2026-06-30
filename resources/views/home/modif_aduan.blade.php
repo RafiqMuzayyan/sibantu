@@ -8,7 +8,7 @@
         <form
             action="{{ $isEdit ? route('aduan.update', $aduan->id) : route('aduan.store') }}"
             method="POST"
-            class="flex gap-8"
+            class="flex gap-4 flex-col md:flex-row"
             enctype="multipart/form-data"
         >
             @csrf
@@ -48,7 +48,7 @@
 
                 <div
                     id="map"
-                    class="w-full h-105 bg-egg rounded-xl overflow-hidden mb-4"
+                    class="w-full h-70 md:h-105 bg-egg rounded-xl overflow-hidden mb-4"
                 ></div>
 
                 <input
@@ -75,7 +75,7 @@
                 <div id="hapus-bukti-container"></div>
             </div>
 
-            <aside class="w-105 flex flex-col gap-4">
+            <aside class="w-full md:w-105 flex flex-col gap-4">
 
                 <div class="bg-egg rounded-xl p-5">
                     <div class="flex justify-between items-center w-full mb-4">

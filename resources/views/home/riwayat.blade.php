@@ -11,18 +11,18 @@
                 <form 
                     method="GET"
                     action="{{ route('riwayat') }}" 
-                    class="flex gap-2 items-center">
-                    <div>
+                    class="flex flex-col md:flex-row gap-2 items-center w-full md:w-fit">
+                    <div class="w-full md:w-fit">
                         <input 
                             type="text" 
                             id="search"
                             placeholder="Cari Aduan..."
                             name="search" 
-                            class=" p-2 rounded-md border bg-primary/50 text-white"
+                            class=" p-2 rounded-md border bg-primary/50 text-white w-full"
                             value="{{ request('search') }}"
-                        >
+                        > 
                     </div>
-                    <div class="flex items-center gap-2"  >
+                    <div class="w-full text-sm md:text-base md:w-fit flex items-center gap-2  justify-end"  >
                         <select class=" p-2 rounded-md border bg-primary text-white" name="kategori" onchange="this.form.submit()">
                             <option value="">Semua Kategori</option>
                             <option
@@ -101,38 +101,41 @@
                         </div>
                     @endif
                 @else
-                    <table class=" bg-white/50">
-                    
-                        <tr>
-                            <th>Judul</th>
-                            <th>
-                                Dibuat
-                            </th>
-                            <th>Kategori</th>
-                            <th>Status</th>
-                        </tr>
-                        @foreach ($data_aduan as $aduan)                        
+                    <table class=" bg-white/50 my-table">
+                        <thead>
                             <tr>
-                                <td>
-                                    <a class="text-primary hover:underline" href="/aduan-ku/{{ $aduan['id'] }}">
-                                        {{ Str::limit($aduan['judul'], 50) }}
-                                    </a>
-                                </td>
-                                <td>{{ $aduan->created_at->diffForhumans() }}</td>
-                                <td>{{ ucfirst($aduan['jenis_aduan']) }}</td>
-                                <td>
-                                    <div class="flex items-center gap-2">
-                                        <div  class="w-3 h-3 rounded-full {{ match($aduan->status) {
-                                            'selesai' => 'bg-selesai',
-                                            'pending' => 'bg-pending',
-                                            'diproses' => 'bg-diproses',
-                                            'ditolak' => 'bg-ditolak',
-                                        } }}"></div>
-                                        <span>{{ ucfirst($aduan['status']) }}</span>
-                                    </div>
-                                </td>
+                                <th>Judul</th>
+                                <th>
+                                    Dibuat
+                                </th>
+                                <th>Kategori</th>
+                                <th>Status</th>
                             </tr>
-                        @endforeach
+                        </thead>
+                        <tbody>
+                            @foreach ($data_aduan as $aduan)                        
+                                <tr>
+                                    <td data-label="judul">
+                                        <a class="text-primary hover:underline line-clamp-1" href="/aduan-ku/{{ $aduan['id'] }}">
+                                            {{ Str::limit($aduan['judul'], 40) }}
+                                        </a>
+                                    </td>
+                                    <td data-label="Dibuat">{{ $aduan->created_at->diffForhumans() }}</td>
+                                    <td data-label="kategori"> {{ ucfirst($aduan['jenis_aduan']) }}</td>
+                                    <td data-label="status">
+                                        <div class="flex justify-end md:justify-start items-center gap-2">
+                                            <div  class="w-3 h-3 rounded-full {{ match($aduan->status) {
+                                                'selesai' => 'bg-selesai',
+                                                'pending' => 'bg-pending',
+                                                'diproses' => 'bg-diproses',
+                                                'ditolak' => 'bg-ditolak',
+                                            } }}"></div>
+                                            <span>{{ ucfirst($aduan['status']) }}</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                         
                     </table>
                 @endif

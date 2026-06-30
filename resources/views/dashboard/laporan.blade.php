@@ -2,19 +2,21 @@
 
     <x-slot:header>
         <!-- HEADER -->
-        <div class="flex items-stretch 
-        2xl:items-center  2xl:justify-between flex-col 2
-        2xl:flex-row">
-    
-            <h1 class="text-3xl  font-bold text-black">
+        <div class="flex flex-col 2xl:flex-row 2xl:items-center 2xl:justify-between gap-5">
+
+            <h1 class="text-3xl font-bold text-black">
                 Laporan Periode Terpilih
             </h1>
-    
-            <form method="get" class="flex items-center justify-end gap-5">
-    
-                <div class="flex items-center gap-3">
-    
-                    <select name="kategori" class="px-4 py-2 rounded-xl border bg-primary text-white">
+
+            <form method="GET" class="w-full flex flex-col sm:flex-row  gap-4">
+
+                <!-- Filter -->
+                <div class="w-full grid justify-end grid-cols-2 md:flex gap-3">
+
+                    <select
+                        name="kategori"
+                        class="bg-primary text-white px-4 py-2 rounded-xl w-full xl:w-auto"
+                    >
                          <option
                             value="semua"
                             @selected(request('kategori', 'semua') == 'semua')
@@ -40,74 +42,84 @@
                             Pakaian
                         </option>
                     </select>
-    
-                    <select name="status" class="px-4 py-2 rounded-xl border bg-primary text-white">
-                         <option
-                            value="semua"
-                            @selected(request('status', 'semua') == 'semua')
-                        >
-                            Semua Status
-                        </option>
+
+                    <select
+                        name="status"
+                        class="bg-primary text-white px-4 py-2 rounded-xl w-full xl:w-auto"
+                    >
                         <option
-                            value="pending"
-                            @selected(request('status') == 'pending')
-                        >
-                            Pending
-                        </option>
-                        <option
-                            value="diproses"
-                            @selected(request('status') == 'diproses')
-                        >
-                            Diproses
-                        </option>
-                        <option
-                            value="selesai"
-                            @selected(request('status') == 'selesai')
-                        >
-                            Selesai
-                        </option>
-                        <option
-                            value="ditolak"
-                            @selected(request('status') == 'ditolak')
-                        >
-                            Ditolak
-                        </option>
+                                value="semua"
+                                @selected(request('status', 'semua') == 'semua')
+                            >
+                                Semua Status
+                            </option>
+                            <option
+                                value="pending"
+                                @selected(request('status') == 'pending')
+                            >
+                                Pending
+                            </option>
+                            <option
+                                value="diproses"
+                                @selected(request('status') == 'diproses')
+                            >
+                                Diproses
+                            </option>
+                            <option
+                                value="selesai"
+                                @selected(request('status') == 'selesai')
+                            >
+                                Selesai
+                            </option>
+                            <option
+                                value="ditolak"
+                                @selected(request('status') == 'ditolak')
+                            >
+                                Ditolak
+                            </option>
                     </select>
-    
-                </div>
-                <div class="w-px h-10 bg-black/20"></div>
-                <div class="flex items-center gap-3">
-    
+
                     <input
                         type="date"
                         name="tanggal_mulai"
                         value="{{ request('tanggal_mulai') }}"
-                        class="bg-primary text-white px-4 py-2 rounded-xl">
-    
+                        class="bg-primary text-white px-4 py-2 rounded-xl w-full xl:w-auto"
+                    >
+
                     <input
                         type="date"
                         name="tanggal_selesai"
                         value="{{ request('tanggal_selesai') }}"
-                        class="bg-primary text-white px-4 py-2 rounded-xl">
-    
+                        class="bg-primary text-white px-4 py-2 rounded-xl w-full xl:w-auto"
+                    >
+
                 </div>
-                <div class="w-px h-10 bg-black/20"></div>
-                <button type="submit" class="px-4 py-2 rounded-xl font-semibold text-black border-2 cursor-pointer border-primary transition hover:bg-primary hover:text-white">
-                    Tampilkan 
-                </button>
+
+                <div class=" flex justify-end">
+
+                    <button
+                        type="submit"
+                        class="px-6 py-2 rounded-xl font-semibold border-2 border-primary
+                            hover:bg-primary hover:text-white transition cursor-pointer"
+                    >
+                        Tampilkan
+                    </button>
+
+                </div>
+
             </form>
-    
+
         </div>
     </x-slot:header>
 
     <!-- CONTENT -->
-    <div class="flex gap-6 h-full">
+    <div class="flex flex-col lg:flex-row gap-6 h-full">
 
         <!-- LEFT -->
         <div class="flex flex-1 flex-col gap-6">
 
-            <div class="grid grid-cols-5 gap-4">
-                <div class="flex flex-col bg-primary gap-2 p-4 my-shadow rounded-xl  text-white ">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                <div class="flex flex-col col-span-2 md:col-span-1 bg-primary gap-2 p-4 my-shadow rounded-xl  text-white ">
                     <h3 class="font-semibold">
                         <i class="fa-solid fa-list"></i> 
                         Total Aduan
@@ -116,7 +128,7 @@
                         {{ $total_aduan }}
                     </p>
                 </div>
-                <div class="flex flex-col bg-egg my-shadow gap-2 p-4 rounded-xl  text-black ">
+                <div class="flex flex-col  bg-egg my-shadow gap-2 p-4 rounded-xl  text-black ">
                     <h3 class="font-semibold">
                         <i class="fa-solid fa-hourglass-half"></i> 
                         Pending
@@ -195,22 +207,24 @@
                         </div>
                     @else
                     <div class="max-h-80 overflow-y-auto">
-                        <table class=" bg-white/50">
-                            <tr>
-                                <th>Judul</th>
-                                <th>Pelapor</th>
-                                <th>Kategori</th>
-                                <th>Tanggal</th>
-                                <th>Status</th>
-                            </tr>
+                        <table class=" bg-white/50 my-table">
+                            <thead>
+                                <tr>
+                                    <th>Judul</th>
+                                    <th>Pelapor</th>
+                                    <th>Kategori</th>
+                                    <th>Tanggal</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
                             @foreach ($data_aduan as $aduan)                             
                                 <tr>
-                                    <td>{{ Str::limit($aduan['judul'], 50) }}</td>
-                                    <td>{{ $aduan->user->nama }}</td>
-                                    <td>{{ $aduan['jenis_aduan'] }}</td>
-                                    <td>{{ $aduan->created_at->translatedFormat('d F Y') }}</td>
-                                    <td>
-                                        <div class="flex items-center gap-2">
+                                    <td data-label="Judul">{{ Str::limit($aduan['judul'], 50) }}</td>
+                                    <td data-label="Pelapor">{{ $aduan->user->nama }}</td>
+                                    <td data-label="Kategori">{{ $aduan['jenis_aduan'] }}</td>
+                                    <td data-label="Tanggal">{{ $aduan->created_at->translatedFormat('d F Y') }}</td>
+                                    <td data-label="Status">
+                                        <div class="flex items-center justify-end md:justify-start gap-2">
                                             <div  class="w-3 h-3 rounded-full {{ match($aduan->status) {
                                                 'selesai' => 'bg-selesai',
                                                 'pending' => 'bg-pending',
@@ -232,7 +246,7 @@
         </div>
 
         <!-- SIDEBAR -->
-        <div class="w-80">
+        <div class="w-full lg:w-80">
 
             <form
                 class="flex flex-col bg-egg my-shadow rounded-2xl p-5 gap-6"

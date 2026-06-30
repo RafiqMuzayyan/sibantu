@@ -5,21 +5,21 @@
     <div class="flex flex-col flex-1 h-fit bg-egg my-shadow p-4 rounded-md gap-4">
         <div class="flex items-center justify-end">
             <form
-                class="flex gap-2 items-center"
+                class="flex flex-col-reverse md:flex-row gap-2 justify-end items-center w-full"
                 method="GET"
                 action="{{ route('masyarakat') }}" 
             >
-                <div>
+                <div class="w-full md:w-fit">
                     <input 
                         name="search" 
                         type="text" 
                         placeholder="Cari Masyarakat..." 
-                        class=" p-2 rounded-md border bg-primary/50 text-white"
+                        class=" p-2 rounded-md border bg-primary/50 text-white w-full"
                         id="search"
                         value="{{ request('search') }}"
                     >
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 justify-end w-full md:w-fit">
                     <select
                         name="sort"
                         class="p-2 rounded-md border bg-primary text-white"
@@ -62,23 +62,25 @@
                     </div>
                 @endif
             @else
-            <table class=" bg-white/50">
-                <tr>
-                    <th>Nama</th>
-                    <th>NIK</th>
-                    <th>Email</th>
-                    <th>Jumlah Aduan</th>
-                    <th>Bergabung</th>
-                    <th>Aksi</th>
-                </tr>
+            <table class=" bg-white/50 my-table">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>NIK</th>
+                        <th>Email</th>
+                        <th>Jumlah Aduan</th>
+                        <th>Bergabung</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
                 @foreach ($data_masyarakat as $masyarakat)                   
                     <tr>
-                        <td>{{ $masyarakat['nama'] }}</td>
-                        <td>{{ $masyarakat['nik'] }}</td>
-                        <td>{{ $masyarakat['email'] }}</td>
-                        <td>{{ $masyarakat['data_aduan_count'] }}</td>
-                        <td>{{ $masyarakat->created_at->translatedFormat('d F Y') }}</td>
-                        <td>
+                        <td data-label="Nama">{{ $masyarakat['nama'] }}</td>
+                        <td data-label="NIK">{{ $masyarakat['nik'] }}</td>
+                        <td data-label="Email">{{ $masyarakat['email'] }}</td>
+                        <td data-label="Jumlah Aduan">{{ $masyarakat['data_aduan_count'] }}</td>
+                        <td data-label="Bergabung">{{ $masyarakat->created_at->translatedFormat('d F Y') }}</td>
+                        <td data-label="Aksi">
                             <a
                                 href="{{ route('data_aduan', ['search' => $masyarakat -> nama]) }}"
                                 class="font-semibold bg-primary text-white px-4 py-1 rounded"

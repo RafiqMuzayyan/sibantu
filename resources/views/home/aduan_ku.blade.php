@@ -1,12 +1,12 @@
 <x-home-layout>
     <div class="flex flex-col flex-1 px-4 py-8">
-        <div class="flex gap-8">
+        <div class="flex flex-col md:flex-row gap-4">
             <div class="flex flex-1 flex-col gap-4">
                 <div class="mb-4">
-                    <h1 class="text-4xl font-bold text-primary mb-4">
+                    <h1 class="text-3xl lg-text-4xl font-bold text-primary mb-4">
                         {{ $aduan['judul'] }}
                     </h1>
-                    <p class="text-base leading-7 text-black/80 max-w-4xl">
+                    <p class="text-sm lg:text-base leading-7 text-black/80 max-w-4xl">
                         {{ $aduan['deskripsi'] }}
                     </p>
                 </div>
@@ -14,7 +14,7 @@
                     id="map" 
                     data-lat="{{ $aduan->latitude }}"
                     data-lng="{{ $aduan->longitude }}" 
-                    class="w-full h-105 bg-egg rounded-xl overflow-hidden "
+                    class="w-full h-70 lg:h-105 bg-egg rounded-xl overflow-hidden "
                 >
                 </div>
                 <div class="flex gap-2">
@@ -42,7 +42,7 @@
                     @endif
                 </div>
             </div>
-            <aside class="w-105 flex flex-col gap-5">
+            <aside class="w-full md:w-105 flex flex-col gap-4">
               
                 <div class="bg-egg rounded-xl p-5 my-shadow">
                     <h2 class="text-xl font-semibold text-black mb-4">

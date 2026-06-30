@@ -75,7 +75,7 @@
     
                     <a  
                         href="{{ route('aduan.create', ['jenis' => 'sembako']) }}" 
-                        class="bg-primary flex flex-col justify-center items-center gap-3 h-32 rounded-3xl text-white hover:bg-primary-dark cursor-pointer transition">
+                        class="bg-primary flex flex-col justify-center items-center gap-3 h-32 rounded-2xl text-white hover:bg-primary-dark cursor-pointer transition">
     
                         <i class="fa-solid fa-bowl-food text-3xl"></i>
     
@@ -87,7 +87,7 @@
     
                     <a
                         href="{{ route('aduan.create', ['jenis' => 'hunian sementara']) }}" 
-                        class="bg-primary flex flex-col justify-center items-center gap-3 h-32 rounded-3xl text-white hover:bg-primary-dark cursor-pointer transition">
+                        class="bg-primary flex flex-col justify-center items-center gap-3 h-32 rounded-2xl text-white hover:bg-primary-dark cursor-pointer transition">
     
                         <i class="fa-solid fa-tent text-3xl"></i>
     
@@ -99,7 +99,7 @@
     
                     <a
                         href="{{ route('aduan.create', ['jenis' => 'pakaian']) }}" 
-                        class="bg-primary flex flex-col justify-center items-center gap-3 h-32 rounded-3xl text-white hover:bg-primary-dark cursor-pointer transition">
+                        class="bg-primary flex flex-col justify-center items-center gap-3 h-32 rounded-2xl text-white hover:bg-primary-dark cursor-pointer transition">
     
                         <i class="fa-solid fa-shirt text-3xl"></i>
     

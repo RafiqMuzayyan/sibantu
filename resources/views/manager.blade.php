@@ -9,7 +9,7 @@
 </head>
 <body class="max-w-7xl px-4 py-8 mx-auto min-h-screen" x-data="confirmModal">
         <x-confirm-modal />
-        <div class="mb-8 flex justify-between items-center w-full">
+        <div class="mb-8 gap-4 flex flex-col-reverse sm:flex-row justify-between sm:items-center w-full">
             <div class="">
                 <h1 class="text-4xl font-bold text-primary">
                     Dashboard Manajer
@@ -19,7 +19,7 @@
                     Ringkasan data laporan Sistem SiBantu
                 </p>
             </div>
-            <form method="POST" action="{{ route('logout') }}" x-ref="logout">
+            <form method="POST" action="{{ route('logout') }}" x-ref="logout" class="text-end">
                 @csrf
                 <button 
                     type="button"
@@ -103,21 +103,23 @@
                                 </div>
                             @endif
                         @else
-                        <table class=" bg-white/50">
-                            <tr>
-                                <th>Judul</th>
-                                <th>
-                                    Periode
-                                </th>
-                                <th>Total Aduan</th>
-                                <th>Dibuat Oleh</th>
-                                <th>Tanggal</th>
-                                <th>Aksi</th>
-                            </tr>
+                        <table class=" bg-white/50 my-table">
+                            <thead>
+                                <tr>
+                                    <th>Judul</th>
+                                    <th>
+                                        Periode
+                                    </th>
+                                    <th>Total Aduan</th>
+                                    <th>Dibuat Oleh</th>
+                                    <th>Tanggal</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
                             @foreach ($data_laporan as $laporan)            
                             <tr>
-                                <td>{{ $laporan->judul }}</td>
-                                <td>
+                                <td data-label="Judul">{{ $laporan->judul }}</td>
+                                <td data-label="Periode">
                                     @if (!$laporan->tanggal_mulai && !$laporan->tanggal_selesai)
                                         Semua Periode
                                     @else
@@ -126,11 +128,11 @@
                                         {{ $laporan->tanggal_selesai->translatedFormat('d F Y') }}
                                     @endif
                                 </td> 
-                                <td>{{ $laporan->user->nama }}</td>
-                                <td>{{ $laporan->created_at->diffForhumans() }}</td>
-                                <td>{{ $laporan->total_aduan }}</td>
-                                <td>
-                                    <div class="flex gap-2 items-center">
+                                <td data-label="Total Aduan">{{ $laporan->total_aduan }}</td>
+                                <td data-label="Dibuat Oleh">{{ $laporan->user->nama }}</td>
+                                <td data-label="Tanggal">{{ $laporan->created_at->translatedFormat('d F Y') }}</td>
+                                <td data-label="Aksi">
+                                    <div class="flex gap-2 items-center justify-end md:justify-start">
                                         <a class="font-semibold bg-primary text-white px-4 py-1 rounded" href="{{ asset('storage/' . $laporan->file) }}" target="_blank">lihat</a>
                                         <a class="font-semibold bg-primary text-white px-4 py-1 rounded" href="{{ asset('storage/' . $laporan->file) }}" download>Download</a>
                                     </div>
