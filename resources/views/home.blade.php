@@ -126,7 +126,7 @@
     
                 <div class="grid grid-cols-1 sm:grid-cols-2 xl:flex xl:flex-col gap-4">
                     @if($progress->isEmpty())
-                        <div class="bg-white/50 rounded-xl p-6 text-center">
+                        <div class="bg-white/50 rounded-xl sm:col-span-2 p-6 text-center">
                          <i class="fa-solid fa-inbox text-4xl text-black/30 mb-3"></i>
                             <h3 class="font-semibold text-lg text-black">
                                 Belum Ada Aduan

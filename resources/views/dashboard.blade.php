@@ -57,13 +57,13 @@
         <div class="flex flex-1 flex-col gap-4 h-full">
             <div class="w-full  bg-egg my-shadow rounded-xl p-4">
 
-                <div class="flex justify-between mb-4 items-center">
+                <div class="flex flex-col gap-2 sm:flex-row justify-between mb-4 items-center">
                     <h2 class="text-2xl text-black font-semibold ">
                         Distribusi Jenis Aduan
                     </h2>
-                    <div class="flex gap-8">
+                    <div class="flex gap-8 w-full sm:w-fit">
 
-                        <div class="bg-white/50 py-2 px-6 rounded-xl">
+                        <div class="bg-white/50 py-2 px-6 rounded-xl w-full ">
                             <p class="text-sm text-black font-semibold  ">
                                 Kategori Terbanyak :
                             </p>

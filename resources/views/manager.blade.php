@@ -9,9 +9,9 @@
 </head>
 <body class="max-w-7xl px-4 py-8 mx-auto min-h-screen" x-data="confirmModal">
         <x-confirm-modal />
-        <div class="mb-8 gap-4 flex flex-col-reverse sm:flex-row justify-between sm:items-center w-full">
+        <div class="mb-4 gap-4 flex flex-col sm:flex-row justify-between sm:items-center w-full">
             <div class="">
-                <h1 class="text-4xl font-bold text-primary">
+                <h1 class="text-3xl sm:text-4xl font-bold text-primary">
                     Dashboard Manajer
                 </h1>
     
@@ -19,7 +19,7 @@
                     Ringkasan data laporan Sistem SiBantu
                 </p>
             </div>
-            <form method="POST" action="{{ route('logout') }}" x-ref="logout" class="text-end">
+            <form method="POST" action="{{ route('logout') }}" x-ref="logout" class="sm:text-end">
                 @csrf
                 <button 
                     type="button"
