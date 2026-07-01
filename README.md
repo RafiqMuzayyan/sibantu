@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/badge/PHP-8.3-blue?style=for-the-badge&logo=php">
   <img src="https://img.shields.io/badge/MySQL-Database-orange?style=for-the-badge&logo=mysql">
   <img src="https://img.shields.io/badge/TailwindCSS-4-06B6D4?style=for-the-badge&logo=tailwindcss">
-  <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Status-Demo-0ea5e9?style=for-the-badge">
 </p>
 
 <p align="center">
