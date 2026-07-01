@@ -112,7 +112,7 @@ Masyarakat
 ### Clone Repository
 
 ```bash
-git clone https://github.com/USERNAME/sibantu.git
+git clone https://github.com/RafiqMuzayyan/sibantu.git
 cd sibantu
 ```
 
